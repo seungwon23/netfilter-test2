@@ -191,6 +191,5 @@ int main(int argc, char **argv)
 	nfq_close(h);
 
 	free(host);
-
 	exit(0);
 }

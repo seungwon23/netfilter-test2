@@ -117,7 +117,6 @@ int main(int argc, char **argv)
 	int rv;
 	char buf[4096] __attribute__ ((aligned));
 
-	// [수정 1] argc 검사 추가
 	if (argc < 2) {
 		fprintf(stderr, "syntax : netfilter-test <host>\n");
 		fprintf(stderr, "sample : netfilter-test test.gilgil.net\n");
@@ -125,7 +124,6 @@ int main(int argc, char **argv)
 	}
 
 	host_len = strlen(argv[1]);
-	// [수정 2] malloc 크기 수정: sizeof(host_len) → host_len + 1
 	host = (char*)malloc(host_len + 1);
 	if (!host) {
 		fprintf(stderr, "malloc failed\n");
@@ -192,7 +190,6 @@ int main(int argc, char **argv)
 	printf("closing library handle\n");
 	nfq_close(h);
 
-	// [수정 3] free 추가
 	free(host);
 
 	exit(0);
